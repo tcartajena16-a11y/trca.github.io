@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #eef1f4;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: white;
+    border-radius: 12px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ff7b7b;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+nav ul li a.active {
+    color: #ff7b7b;
+    font-weight: 700;
+}
+
+/* PAGES */
+.page {
+    display: none;
+    padding: 60px;
+    background: white;
+    border-radius: 12px;
+    margin: 20px 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* HERO */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero-text h1 {
+    font-size: 60px;
+}
+
+.hero-text span {
+    color: #ff7b7b;
+}
+
+.btn {
+    padding: 12px 25px;
+    background: #ff7b7b;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 15px;
+}
+
+.hero-img img {
+    width: 420px;
+    max-width: 100%;
+}
+
+.container {
+    margin: 20px;
+    border: 6px solid #0f2a36;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-img {
+        margin-top: 20px;
+    }
+}
+
+</style>
+</head>
+
+<body onload="showPage('home')">
+
+<div class="container">
+
+<!-- NAVBAR -->
+<nav>
+    <div class="logo">Portfolio.</div>
+    <ul>
+        <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('about')">About</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('skills')">Skills</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('services')">Services</a></li>
+        <li><a href="javascript:void(0)" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="page hero">
+    <div class="hero-text">
+        <h3>Hello,</h3>
+        <h1>I'm <span>Tricia Cartajena</span></h1>
+        <h2 style="color:#ff7b7b;">ICT STUDENT</h2>
+        <a href="javascript:void(0)" class="btn" onclick="showPage('contact')">Hire Me</a>
+    </div>
+
+    <div class="hero-img">
+        <img src="cata.jpg" alt="Tricia Cartajena">
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="page">
+    <h1>About Me</h1>
+    <p>
+        My name is Tricia Jane R. Cartajena 17 years old, and 
+        I am an ICT student who is still learning and improving my skills in this field.
+        I hope you will consider hiring me, and I assure you that I will do my best
+        to meet your standards.
+    </p>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="page">
+    <h1>My Skills</h1>
+    <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+    </ul>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="page">
+    <h1>Services</h1>
+    <p>Website Design</p>
+    <p>System Development</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page">
+    <h1>Contact</h1>
+    <p>Email: tcartajena16@gmail.com</p>
+    <p>Phone: 09059119653</p>
+</section>
+
+</div>
+
+<!-- JAVASCRIPT -->
+<script>
+function showPage(pageId){
+    let pages = document.querySelectorAll(".page");
+    pages.forEach(function(page){
+        page.style.display = "none";
+    });
+
+    let links = document.querySelectorAll("nav ul li a");
+    links.forEach(link => link.classList.remove("active"));
+
+    document.getElementById(pageId).style.display = (pageId === "home") ? "flex" : "block";
+    document.querySelector(`nav ul li a[onclick="showPage('${pageId}')"]`).classList.add("active");
+}
+</script>
+
+</body>
+</html>
